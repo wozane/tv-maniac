@@ -1,9 +1,14 @@
 const HtmlWebpackPlugin = require ('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     filename: './dist/bundle-[hash].js',
+  },
+  module: {
+    loaders: [
+      { test: /\.jsx$/, use: 'babel-loader' },
+    ],
   },
   plugins: [new HtmlWebpackPlugin({
     template: './src/index.html',
