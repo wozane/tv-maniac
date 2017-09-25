@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import './styles.scss'
+
 const App = props => (<div title="My Div">
   <h1>{props.message}</h1>
 </div>)
