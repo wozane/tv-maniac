@@ -6,7 +6,7 @@ module.exports = {
     filename: './dist/bundle-[hash].js',
   },
   plugins: [new HtmlWebpackPlugin({
-    title: 'Tv Maniac',
+    template: './src/index.html',
   })],
   devtool: 'source-map',
   devServer: {
