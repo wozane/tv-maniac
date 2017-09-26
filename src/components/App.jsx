@@ -25,13 +25,5 @@ const App = () => (<BrowserRouter>
     </main>
   </div>
 </BrowserRouter>)
-/*
-App.propTypes = {
-  message: PropTypes.string,
-}
 
-App.defaultProps = {
-  message: 'no data',
-}
-*/
 export default App

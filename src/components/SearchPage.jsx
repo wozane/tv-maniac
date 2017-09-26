@@ -1,5 +1,8 @@
 import React from 'react'
+import Search from './Search'
 
-const SearchPage = () => <div>SearchPage</div>
+const SearchPage = () => (<div>
+  <Search />
+</div>)
 
 export default SearchPage
