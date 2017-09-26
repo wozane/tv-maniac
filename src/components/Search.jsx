@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class Search extends React.Component {
   constructor() {
     super()
@@ -8,14 +9,28 @@ class Search extends React.Component {
     }
   }
 
+  handleChange = (event) => {
+    this.setState({ query: event.target.value })
+  }
+
+  handleClick = (event) => {
+    this.setState({ query: '' })
+    event.preventDefault()
+  }
+
   render() {
     return (
       <form className="field has-addons">
         <div className="control" >
-          <input type="search" className="input" />
+          <input
+            type="search"
+            value={this.state.query}
+            className="input"
+            onChange={this.handleChange}
+          />
         </div>
         <div className="control">
-          <button className="button is-primary">
+          <button className="button is-primary" onClick={this.handleClick}>
             search
           </button>
         </div>

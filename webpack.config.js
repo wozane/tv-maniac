@@ -7,7 +7,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/, use: 'babel-loader' },
+      { test: /\.jsx$/, use: ['babel-loader', 'eslint-loader'] },
       { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
     ],
   },

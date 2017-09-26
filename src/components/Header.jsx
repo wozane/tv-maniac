@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
 const Header = (props) => {
-  const items = props.items.map(item => ( 
+  const items = props.items.map(item => (
     <NavLink {...item} key={item.label} activeClassName="is-active" className="navbar-item is-tab">
       {item.label}
     </NavLink>),
