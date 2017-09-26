@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Header from './Header'
@@ -7,9 +6,15 @@ import Home from './Home'
 import SearchPage from './SearchPage'
 import Contact from './Contact'
 
+const menuItems = [
+  { label: 'Home', to: '/', exact: true },
+  { label: 'Search', to: '/tv' },
+  { label: 'Contact', to: '/contact' },
+]
+
 const App = () => (<BrowserRouter>
   <div>
-    <Header />
+    <Header items={menuItems} />
     <main className="container">
       <Switch> {/* first match will work */}
         <Route exact path="/" component={Home} />
