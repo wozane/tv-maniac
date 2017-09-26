@@ -1,4 +1,4 @@
-const HtmlWebpackPlugin = require ('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.jsx',
@@ -11,12 +11,15 @@ module.exports = {
       { test: /\.scss$/, use: ['style-loader','css-loader','sass-loader'] },
     ],
   },
+  resolve: {
+    extensions: ['.jsx', '.js', '.json'],
+  },
   plugins: [new HtmlWebpackPlugin({
     template: './src/index.html',
   })],
   devtool: 'source-map',
   devServer: {
-    contentBase:'./src',
+    contentBase: './src',
     // noInfo: true,
   },
 }
