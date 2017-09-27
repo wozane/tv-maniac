@@ -1,35 +1,23 @@
 import React from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 // import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { search } from '../actions'
+import * as actions from '../actions'
 import Search from './Search'
 import TvPoster from './TvPoster'
 
 class SearchPage extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      shows: [],
-    }
-  }
-
   componentDidMount() {
     this.handleSearch('flash')
   }
 
   handleSearch = (query) => {
     this.props.search(query)
-
-    const apiUrl = `http://api.tvmaze.com/search/shows?q=${query}`
-    axios.get(apiUrl).then((resp) => {
-      const shows = resp.data.map(({ show }) => show)
-      this.setState({ shows })
-    })
+    this.props.fetchShows(query)
   }
 
   render() {
-    const shows = this.state.shows.map(show => (
+    const shows = this.props.shows.map(show => (
       <div key={show.id} className="column is-3">
         <TvPoster show={show} size="md" />
       </div>
@@ -43,5 +31,10 @@ class SearchPage extends React.Component {
     </div>)
   }
 }
+function mapStateToProps(state) {
+  return {
+    shows: state.shows,
+  }
+}
 
-export default connect(null, { search })(SearchPage)
+export default connect(mapStateToProps, actions)(SearchPage)
