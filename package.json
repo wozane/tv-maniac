@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "yarn && webpack-dev-server",
     "test": "jest --watch",
     "lint": "eslint"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "bulma": "^0.5.3",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
