@@ -7,7 +7,7 @@ import Search from './Search'
 describe('<Search />', () => {
   let search
   beforeEach(() => {
-    search = mount(<Search />)
+    search = mount(<Search onSubmit={() => {}} />)
   })
   it('has input and button', () => {
     expect(search.find('input[type="search"]').exists()).toBe(true)
@@ -16,7 +16,11 @@ describe('<Search />', () => {
   })
 
   describe('when input change happens', () => {
+    const onSubmitHandler = jest.fn()
+
     beforeEach(() => {
+      onSubmitHandler.mockClear()
+      search = mount(<Search onSubmit={onSubmitHandler} />)
       search.find('input').simulate('change', {
         target: { value: 'zapytanie' },
       })
@@ -29,6 +33,12 @@ describe('<Search />', () => {
     it('clears input when button clicked', () => {
       search.find('button').simulate('click')
       expect(search.state().query).toBe('')
+    })
+
+    it('runs onSubmit prop when button clicked', () => {
+      search.find('button').simulate('click')
+      expect(onSubmitHandler).toHaveBeenCalledTimes(1)
+      expect(onSubmitHandler).toHaveBeenCalledWith('zapytanie')
     })
 
     it('updates input text when input changes', () => {

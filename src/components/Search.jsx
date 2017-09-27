@@ -1,7 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 
 class Search extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -15,6 +20,7 @@ class Search extends React.Component {
 
   handleClick = (event) => {
     this.setState({ query: '' })
+    this.props.onSubmit(this.state.query)
     event.preventDefault()
   }
 
