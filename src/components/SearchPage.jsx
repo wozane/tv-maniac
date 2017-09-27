@@ -1,7 +1,7 @@
 import axios from 'axios'
-
 import React from 'react'
 import Search from './Search'
+import TvPoster from './TvPoster'
 
 class SearchPage extends React.Component {
   constructor() {
@@ -27,10 +27,6 @@ class SearchPage extends React.Component {
     const shows = this.state.shows.map(show => (
       <div key={show.id} className="column is-3">
         <TvPoster show={show} size="md" />
-        <TvPoster show={show} size="lg" />
-        <TvPoster show={show} /> => <TvPoster show={show} size="md" />
-        <img src={show.image.medium} alt="" />
-        <h2 className="subtitle">{ show.name }</h2>
       </div>
     ))
 
