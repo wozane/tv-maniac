@@ -1,5 +1,8 @@
-import axios from 'axios'
 import React from 'react'
+import axios from 'axios'
+// import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { search } from '../actions'
 import Search from './Search'
 import TvPoster from './TvPoster'
 
@@ -16,6 +19,8 @@ class SearchPage extends React.Component {
   }
 
   handleSearch = (query) => {
+    this.props.search(query)
+
     const apiUrl = `http://api.tvmaze.com/search/shows?q=${query}`
     axios.get(apiUrl).then((resp) => {
       const shows = resp.data.map(({ show }) => show)
@@ -38,4 +43,5 @@ class SearchPage extends React.Component {
     </div>)
   }
 }
-export default SearchPage
+
+export default connect(null, { search })(SearchPage)

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 const Header = (props) => {
@@ -13,6 +14,7 @@ const Header = (props) => {
     <div className="navbar-menu container">
       <div className="navbar-start" >
         {items}
+        <span>{props.searchQuery.length}</span>
       </div>
     </div>
   </nav>)
@@ -26,4 +28,10 @@ Header.propTypes = {
   })).isRequired,
 }
 
-export default Header
+function mapStateToProps(state) {
+  return {
+    searchQuery: state.search,
+  }
+}
+
+export default connect(mapStateToProps)(Header)
