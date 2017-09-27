@@ -15,26 +15,24 @@ describe('<Search />', () => {
     expect(search.find('button').text()).toBe('search')
   })
 
-  it('updates state when input changes', () => {
-    search.find('input').simulate('change', {
-      target: { value: 'zapytanie' },
+  describe('when input change happens', () => {
+    beforeEach(() => {
+      search.find('input').simulate('change', {
+        target: { value: 'zapytanie' },
+      })
     })
-    expect(search.state().query).toBe('zapytanie')
-  })
 
-  it('clears input when button clicked', () => {
-    search.find('input').simulate('change', {
-      target: { value: 'zapytanie' },
+    it('updates state when input changes', () => {
+      expect(search.state().query).toBe('zapytanie')
     })
-    search.find('button').simulate('click')
-    expect(search.state().query).toBe('')
-  })
-  /*
-  it('updates input text when input changes', () => {
-    search.find('input').simulate('change', {
-      target: { value: 'zapytanie' },
+
+    it('clears input when button clicked', () => {
+      search.find('button').simulate('click')
+      expect(search.state().query).toBe('')
     })
-    expect(search.find('input').value()).toBe('zapytanie')
+
+    it('updates input text when input changes', () => {
+      expect(search.find('input').get(0).value).toBe('zapytanie')
+    })
   })
-  */
 })
